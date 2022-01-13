@@ -7,16 +7,25 @@ import javax.ws.rs.core.Response;
 
 import org.eclipse.microprofile.config.inject.ConfigProperty;
 
-@Path("sample")
+@Path("/sample")
 public class SampleResource {
 
 	@Inject
 	@ConfigProperty(name = "message")
 	private String message;
 
+
 	@GET
+	@Path("teste_")
 	public Response message() {
 		return Response.ok(message).build();
 	}
+	
+	@GET
+	@Path("teste")
+	public String teste() {
+		return " TEST APLICATION ";
+	}
+	
 
 }
