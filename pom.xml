@@ -47,14 +47,12 @@
 			<scope>test</scope>
 		</dependency>
 
-	<!-- https://mvnrepository.com/artifact/javax.xml/webservices-api -->
 	<dependency>
 		<groupId>javax.xml</groupId>
 		<artifactId>webservices-api</artifactId>
 		<version>2.1-b16</version>
 	</dependency>
 
-	<!-- https://mvnrepository.com/artifact/javax.xml.ws/jaxws-api -->
 	<dependency>
 		<groupId>javax.xml.ws</groupId>
 		<artifactId>jaxws-api</artifactId>
@@ -67,13 +65,30 @@
 		<version>1.1</version>
 	</dependency>
 
-	<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
 	<dependency>
 		<groupId>mysql</groupId>
-		<artifactId>mysql-connector-java</artifactId>
-		<version>8.0.27</version>
+	<artifactId>mysql-connector-java</artifactId>
+	<version>8.0.27</version>
 	</dependency>
-	
+
+	<dependency>
+	    <groupId>javax.persistence</groupId>
+	    <artifactId>javax.persistence-api</artifactId>
+	    <version>2.2</version>
+	</dependency>
+
+		<dependency>
+			<groupId>javax.ws.rs</groupId>
+			<artifactId>javax.ws.rs-api</artifactId>
+			<version>2.1.1</version>
+		</dependency>
+	<dependency>
+	    <groupId>javax</groupId>
+	    <artifactId>javaee-api</artifactId>
+	    <version>8.0.1</version>
+	    <scope>provided</scope>
+	</dependency>
+
 
 
     </dependencies>
