@@ -13,7 +13,7 @@ import br.com.jsn.service.ProdutoService;
 
 @WebService
 @SOAPBinding(style = Style.DOCUMENT)
-public class ProdutoWebService {
+public class ProdutoWebService  {
 	
 	
 	@EJB
