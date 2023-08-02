@@ -1,3 +1,3 @@
-# Project br.com.jsn/virtual-store-with-javaEE
+# Project virtual-store
 
 
