@@ -14,7 +14,6 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
-import io.jsonwebtoken.JwtParserBuilder;
 
 @Service
 public class JWTService {
@@ -33,13 +32,9 @@ public class JWTService {
 
     private Claims extractAllClaims(String token){
 
-        
-        return ((JwtParserBuilder) Jwts.builder())
-        .setSigningKey(getSignInKey())
-        .build()
-        .parseClaimsJws(token)
-        .getBody();
-        
+     
+       return  Jwts.parserBuilder().setSigningKey(getSignInKey()).build().parseClaimsJws(token).getBody();
+       
     }
  
 

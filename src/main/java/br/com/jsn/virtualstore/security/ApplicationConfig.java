@@ -7,7 +7,6 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
-import org.springframework.security.config.annotation.authentication.configurers.userdetails.DaoAuthenticationConfigurer;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -27,11 +26,17 @@ public class ApplicationConfig {
         return new UserDetailsService() {
 
             @Override
-            public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+            public UserDetails loadUserByUsername(String username)  {
                 
-                UserDetails s = accountRepository.findAccountByEmail(username);
-                return  s ;
-                //.orElseThrow( () -> new UsernameNotFoundException("USER NOT FOUND"));
+                try{
+                    UserDetails s = accountRepository.findAccountByEmail(username);
+                    return  s ;
+                   
+                }catch(UsernameNotFoundException e){
+                    
+                }
+                return null ;
+               
             }
             
         };

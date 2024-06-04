@@ -33,8 +33,5 @@ public class SecurityController {
     }
 
 
-    @GetMapping("/buscar/{email}")
-    public ResponseEntity<AccountModel> bucar(@PathVariable String email){
-        return ResponseEntity.ok(authenticationService.buscar(email)) ;
-    }
+
 }   

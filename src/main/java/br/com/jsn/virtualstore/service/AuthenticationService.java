@@ -2,7 +2,10 @@ package br.com.jsn.virtualstore.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -42,9 +45,18 @@ public class AuthenticationService {
     
     public AuthenticationResponse authenticate(AuthenticationRequest request){
 
-        authenticationManager.authenticate( new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword()));
-        
+     
+           try {
+            Authentication authentication = authenticationManager.authenticate(
+                new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword())
+            );
+            // Sucesso na autenticação
+        } catch (AuthenticationException e) {
+            // Falha na autenticação
+            throw new BadCredentialsException("Bad credentials", e);
+        }
         AccountModel user = accountRepository.findAccountByEmail(request.getEmail());
+     
         String jwtToken = jwtService.generateToken(user);
         AuthenticationResponse authenticationResponse = new AuthenticationResponse();
         authenticationResponse.setToken(jwtToken);
