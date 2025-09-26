@@ -14,7 +14,8 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git credentialsId: 'github-token', url: 'https://github.com/sleevs/jsn-virtual-store.git', branch: 'main'
+                git credentialsId: 'github-token', url: 'https://github.com/sleevs/jsn-virtual-store.git', branch: 'master'
+
             }
         }
 
